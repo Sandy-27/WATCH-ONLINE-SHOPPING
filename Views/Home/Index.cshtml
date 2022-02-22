@@ -1,0 +1,56 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <title>Home</title>
+
+</head>
+<body>
+    <div class="div-container">
+        <div class="div-header">
+            <b style="font-size:30px"> Online Shopping Wrist Watch</b>
+        </div><!--div-header-->
+        <div class="clear"></div>
+        <div class="div-topmenu">
+            <ul>
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+
+                <li>
+                    @Html.ActionLink("Products", "ProductsIndex", "Products")
+                </li>
+                <li>
+                    @Html.ActionLink("Contact Us", "ContactUsIndex", "ContactUs")
+                </li>
+                <li>
+                    @Html.ActionLink("Cart", "Index", "ShoppingCart")
+                </li>
+                <li>
+        
+            </ul>
+        </div>     
+            <img style="width:100%" src="~/Media/Images/Layout/Home.jpg" />
+
+            <footer style=" background-color: darkslategrey; color: white; padding: 30px;">
+                <p>Email:<a href="mailto:wristwatch@gmail.com">Sandhiya</a></p>
+
+                <address>
+                    Longlasting Limited,<br>
+                    RF Road,<br>
+                    Palani,624617,<br>
+                    Tamil Nadu,India.
+                </address>
+                <p>Have a good day..!</p>
+            </footer>
+       </div>
+</body>
+</html>

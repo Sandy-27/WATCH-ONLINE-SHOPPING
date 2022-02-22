@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+</head>
+<body>
+    <div class="div-container">
+        <div class="div-header">
+            <b> Online Shopping Wrist Watch</b>
+        </div><!--div-header-->
+        <div class="clear"></div>
+        <div class="div-topmenu">
+            <ul>
+                <li>
+                    @Html.ActionLink("Home", "Index", "Home")
+                </li>
+                @*<li>
+                    @Html.ActionLink("News", "NewsIndex", "News")
+                </li>*@
+                <li>
+                    @Html.ActionLink("Products", "ProductsIndex", "Products")
+                </li>
+                <li>
+                    @Html.ActionLink("Contact Us", "ContactUsIndex", "ContactUs")
+                </li>
+                <li>
+                    @Html.ActionLink("Cart", "Index", "ShoppingCart")
+                </li>
+            
+            </ul>
+        </div><!--div-topmenu-->
+      
+        <div class="clear"></div>
+        <div class="div-left">
+            <div class="category-title">
+               Category List
+            </div><!--category-title-->
+            <div class="category-list">
+                @Html.Action("CategoryPartial", "Category")
+            </div>
+
+
+        </div><!--div-left-->
+        <div class="div-main">
+
+            <div class="clear">
+            </div>
+            @RenderBody()
+        </div><!--div-main-->
+        <div class="clear"></div>
+
+        <div class="div-footer">
+            <p>Email:<a href="mailto:wristwatch@gmail.com">Sandhiya</a></p>
+           
+       <address>
+           Longlasting Limited,<br>
+           RF Road,<br>
+           Palani,624617,<br>
+           Tamil Nadu,India.
+           </address>
+        <p>Have a good day..!</p>
+        </div><!--div-footer-->
+    </div>
+</body>
+</html>

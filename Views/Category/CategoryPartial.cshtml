@@ -1,0 +1,19 @@
+﻿@using WatchOnlineShopping.Models
+@model List<Category>
+    <ul>
+@{
+    foreach (var item in Model)
+    {
+
+            @*<li>
+                <a href="#">@item.Name</a> 
+            </li>*@
+        <li>
+           
+    @Html.ActionLink(@item.Name, "ProductsIndex", "Products", new { category = @item.CategoryId },null)
+</li>
+        //var fromDatabasecollection = new SelectList(@item.Name);
+        //ViewData["CategoryCollection"] = fromDatabasecollection;
+    }
+}
+            </ul>

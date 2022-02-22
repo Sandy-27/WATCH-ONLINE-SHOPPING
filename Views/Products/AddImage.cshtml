@@ -1,0 +1,142 @@
+﻿@model WatchOnlineShopping.Models.Product
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AddImage</title>
+</head>
+<body style="text-align:center;font-size:large">
+    @using (Html.BeginForm("AddImage","Products",FormMethod.Post,new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+        
+    <div class="form-horizontal">
+        <h1>Add the Product Details</h1>
+
+        <br />
+     
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <input type="file" id="image1" name="image1" />
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.CategoryId, "CategoryId", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.DropDownList("CategoryId", new List<SelectListItem>
+       {
+           new SelectListItem{Text="Men's Product",Value="1"},
+           new SelectListItem{Text="Women's Product",Value="2"},
+           new SelectListItem{Text="Kid's Product",Value="3"}
+
+       }, null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.BrandId, "BrandId", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.DropDownList("BrandId", new List<SelectListItem>
+       {
+           new SelectListItem{Text="Leather",Value="1"},
+           new SelectListItem{Text="Chain",Value="2"}
+
+
+       }, null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.BrandId, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModelId, "ModelId", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.DropDownList("ModelId",
+            new List<SelectListItem>
+       {
+           new SelectListItem{Text="Fastrack",Value="1"},
+           new SelectListItem{Text="Titan",Value="2"}
+
+
+       }, null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ModelId, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.SetStartDate, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.SetStartDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SetStartDate, "", new { @class = "text-danger" })
+
+        </div>
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.SetEndDate, htmlAttributes: new { @class = "control-label col-md-2" })
+
+            @Html.EditorFor(model => model.SetEndDate, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.SetEndDate, "", new { @class = "text-danger" })
+
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.IsNew, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IsNew, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.IsNew, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+        <br />
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input style="background-color:aqua;font-size:smaller" type="submit" value="Submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+    
+  
+</body>
+</html>

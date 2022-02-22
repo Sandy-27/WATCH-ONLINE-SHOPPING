@@ -1,0 +1,81 @@
+﻿@using WatchOnlineShopping.Models
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>My cart</h2>
+<div class="main-content">
+   
+    @{ if (Session["Cart"] != null)
+        {
+            using (@Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
+            {
+                <table class="shopping-cart">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sub Total</th>
+                    </tr>
+                    @foreach (var cart in (List<Cart>)Session["Cart"])
+                    {
+                        <tr>
+                            <td>
+                                @cart.Product.ProductName
+                            </td>
+                            <td>
+                                @cart.Product.Price
+                            </td>
+                            <td>
+                                <input type="text" name="quantity" id="quantity" value="@cart.Quantity" />
+                                &nbsp;<span id="errmsg"></span>
+                            </td>
+                            <td>@(string.Format("{0:N0}", cart.Product.Price * cart.Quantity))</td>
+                            <td>
+                                @Html.ActionLink("Delete", "Delete", "ShoppingCart", new { id = cart.Product.ProductId },
+     new { onclick = "return confirm('Are you sure you want to delete the item?');", @class = "delete-shopping" })
+                            </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td colspan="3">Total:</td>
+                        <td>
+                            @{List<Cart> totalrps = (List<Cart>)Session["Cart"];
+                                var total = string.Format("{0:N0}", totalrps.Sum(x => x.Quantity * x.Product.Price));
+
+                                @total}
+
+                        </td>
+                    </tr>
+                </table>
+             <br/>
+                @Html.ActionLink("Continue Shopping", "ProductsIndex", "Products", null, new { @class = "continue-shopping" })
+    <input type="submit" value="Update Cart" class="update-shopping" />                
+                                if (@total == "0")
+                                {
+                <h4>No items in your cart.</h4>   
+                <h4>Please do continue shopping and Add the product before order.</h4>
+                                }
+                                else
+                                {
+
+                @Html.ActionLink("CheckOut", "Login", "User", null, new { @class = "continue-shopping" }) }
+                                        }
+                                    }
+                                    else
+                                    {
+            <h2> No items in your cart!!!</h2> 
+            }
+                                }
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#quantity").keypress(function (e) {
+            if (e.which != 8 && which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errmsg").html("Enter digits only").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });</script>
+    </div>

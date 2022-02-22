@@ -1,0 +1,57 @@
+﻿@using WatchOnlineShopping.Models
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml"; }
+
+<h1 style="text-align:center">Enter the below details</h1>
+
+
+
+@using (Html.BeginForm("ProcessOrder", "User", FormMethod.Post, new { id = "customer-form" }))
+{
+
+
+<table style=" margin-left: auto; margin-right: auto;">
+    <tr>
+        <td colspan="3" style="text-align: center; padding: 20px;font-size:xx-large"> <b> Customer's Information</b> </td>
+
+    </tr>
+  
+    <tr>
+        <td style="padding: 20px;font-size:x-large">   Customer Name:</td>
+        <td style="padding: 20px;"> <input type="text" name="cusName"></td>
+    </tr>
+    <tr>
+        <td style="padding: 20px; font-size: x-large">   Customer Phone Number:</td>
+        <td style="padding: 20px;"> <input type="text" name="cusPhone"></td>
+    </tr>
+    <tr>
+        <td style="padding: 20px; font-size: x-large">   Customer Email:</td>
+        <td style="padding: 20px;"> <input type="text" name="cusEmail"></td>
+    </tr>
+    <tr>
+        <td style="padding: 20px; font-size: x-large">   Customer Address:</td>
+        <td style="padding: 20px;"> <input type="text" name="cusAddress"></td>
+    </tr>
+    <tr>
+        <td style="padding: 20px;font-size:x-large"> <input type="radio" name="cusPayment" checked="checked"> COD(Cash on delivery)</td>
+       
+
+    </tr>
+    <tr><td></td>
+
+        <td colspan="3"><input style="background-color:aqua;font-size:larger;" type="submit" value="Process Order" class="update-shopping" /></td>
+    <td></td>
+    </tr>
+</table>}
+
+<script type="text/javascript">
+    $("#customer-form").validate({
+        rules: {
+            cusName: { required: true },
+            cusPhone: { required: true },
+            cusEmail: { required: true },
+            cusAddress: { required: true }
+          
+        }
+    });
+</script>
