@@ -14,13 +14,16 @@
         body {
             font-family: Arial;
             font-size: 10pt;
+            background-color: whitesmoke;
         }
 
         table {
-            border:none;
+            border: none;
             border-collapse: collapse;
             margin-left: auto;
             margin-right: auto;
+         
+            background-color: lightgrey;
         }
 
             table th {
@@ -28,6 +31,7 @@
                 color: blue;
                 font-weight: bold;
                 font-size: xx-large;
+                background-color: lightgrey;
             }
 
             table th, table td {
@@ -41,6 +45,7 @@
 
         .error {
             color: red;
+            font-size:small
         }
     </style>
 </head>
@@ -59,6 +64,7 @@
                     Login
                 </th>
             </tr>
+            <tr><td></td></tr>
             <tr>
                 <td>
                     Username
@@ -66,10 +72,13 @@
                 <td>
                     @Html.TextBoxFor(m => m.UserName)
                 </td>
-                <td>
+                </tr>
+                <tr>
+                <td colspan="3">
                     @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "error" })
                 </td>
-            </tr>
+                    </tr>
+          
             <tr>
                 <td>
                     Password
@@ -77,22 +86,25 @@
                 <td>
                     @Html.PasswordFor(m => m.Password)
                 </td>
-                <td>
+                </tr>
+                <tr>
+                <td colspan="3">
                     @Html.ValidationMessageFor(m => m.Password, "", new { @class = "error" })
                 </td>
             </tr>
-            
+           
             <tr>
                 <td></td>
+
                 <td>
-                    <input style="background-color:aqua;font-size:smaller" type="submit" value="Login" />
+                    <input style="background-color:aqua;font-size:larger" type="submit" value="Login" />
                 </td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    If You are not registered, @Html.ActionLink("Click Here","Register","User")
+                    If You are not registered, @Html.ActionLink("Click Here", "Register", "User")
                 </td>
                 <td></td>
             </tr>

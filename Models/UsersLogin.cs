@@ -12,12 +12,14 @@ namespace WatchOnlineShopping.Models
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    public partial class UsersLogin
+    public partial class UsersLogin 
     {
         public int UserId { get; set; }
         [Required]
+        [StringLength(20,ErrorMessage ="Name must be minimum 20 characters")]
         public string UserName { get; set; }
         [Required]
+        [RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,12}$",ErrorMessage ="Password must have 8 to 12 letters and contain 1Uppercase,1lowercase,1digit,1Special Character")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required]

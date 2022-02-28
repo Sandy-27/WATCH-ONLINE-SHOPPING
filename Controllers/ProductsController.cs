@@ -18,8 +18,6 @@ namespace WatchOnlineShopping.Controllers
         public PartialViewResult productListPartial(int? category)
         {
            
-
-
             if (category != null)
             {
                 //ViewBag.category = category;
@@ -46,11 +44,7 @@ namespace WatchOnlineShopping.Controllers
             }
             return View(product);
         }
-        //public PartialViewResult productListKids()
-        //{            
-        //    var productKids = onlineShoppingEntities.Products.OrderByDescending(y=>y.ProductId).ToList();
-        //    return PartialView(productKids);
-        //}
+
 
 
         public ActionResult AddImage()

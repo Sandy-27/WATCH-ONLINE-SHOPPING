@@ -6,9 +6,11 @@
 
 <h2>My cart</h2>
 <div class="main-content">
-   
-    @{ if (Session["Cart"] != null)
+
+    @{
+        if (Session["Cart"] != null)
         {
+
             using (@Html.BeginForm("UpdateCart", "ShoppingCart", FormMethod.Post))
             {
                 <table class="shopping-cart">
@@ -49,33 +51,35 @@
                         </td>
                     </tr>
                 </table>
-             <br/>
-                @Html.ActionLink("Continue Shopping", "ProductsIndex", "Products", null, new { @class = "continue-shopping" })
-    <input type="submit" value="Update Cart" class="update-shopping" />                
-                                if (@total == "0")
-                                {
-                <h4>No items in your cart.</h4>   
-                <h4>Please do continue shopping and Add the product before order.</h4>
-                                }
-                                else
-                                {
+                <br />
 
-                @Html.ActionLink("CheckOut", "Login", "User", null, new { @class = "continue-shopping" }) }
-                                        }
-                                    }
-                                    else
-                                    {
-            <h2> No items in your cart!!!</h2> 
-            }
-                                }
 
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#quantity").keypress(function (e) {
-            if (e.which != 8 && which != 0 && (e.which < 48 || e.which > 57)) {
-                $("#errmsg").html("Enter digits only").show().fadeOut("slow");
-                return false;
+                if (@total == "0")
+                {
+                    <h4>No items in your cart.</h4>
+                    <h4>Please do continue shopping and Add the product before order.</h4>
+                    @Html.ActionLink("Continue Shopping", "ProductsIndex", "Products", null, new { @class = "continue-shopping" })
+                }
+                else
+                {
+                    @Html.ActionLink("Continue Shopping", "ProductsIndex", "Products", null, new { @class = "continue-shopping" })
+                    <input type="submit" value="Update Cart" class="update-shopping" />
+                    @Html.ActionLink("CheckOut", "Login", "User", null, new { @class = "continue-shopping" }) }
             }
-        });
-    });</script>
-    </div>
+        }
+        else
+        {
+            <h2> No items in your cart!!!</h2>
+        }
+    }
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#quantity").keypress(function (e) {
+                if (e.which != 8 && which != 0 && (e.which < 48 || e.which > 57)) {
+                    $("#errmsg").html("Enter digits only").show().fadeOut("slow");
+                    return false;
+                }
+            });
+        });</script>
+</div>
